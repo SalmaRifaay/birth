@@ -75,9 +75,8 @@
             padding: 15px;
             border-radius: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: 0.3s;
         }
-        .card img {
+        .card img, .card video {
             width: 100%;
             border-radius: 15px;
             display: block;
@@ -105,38 +104,65 @@
         <div class="subtitle">✦ MEMORIES ✦</div>
         <h2 style="font-weight: 300; font-style: italic; font-size: 1.8rem; margin-top: 5px; color: #5c3d46;">Our Beautiful Moments</h2>
         
-        <div class="gallery">
-            <div class="card">
-                <img src="img1.jpg" alt="Moment 1">
-                <div class="date">أول صورة لينا سوا ♥</div>
+        <div class="gallery" id="photoGallery">
             </div>
+    </div>
 
-            <div class="card">
-                <img src="img2.jpg" alt="Moment 2">
-                <div class="date">أحلى يوم معاك ♥</div>
-            </div>
+    <script>
+        function celebrateNow() {
+            confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+            setTimeout(function() {
+                alert("كل سنه وانت طيب ي حبيبي وعمري،انا بحبك اوي وبحب ايامي كلها معاك...صحيح ده مش اول عيدميلاد ليك وانا معاك بس اول عيدميلاد وانا خطيبتك مش مجرد بيست فريند بقي😂،وان شاء الله عيدميلادك الجاي يكون واحنا متجوزين ومبسوطين واحاول اعملك سبرايز احلى من دي عشان انا معنديش غير اوفا واحد حبيبي وحياتي وعمري والله...ربنا يخليك ليا ي حبيب سوزو😂♥️♥️🙈");
+            }, 500);
+        }
 
-            <div class="card">
-                <img src="img3.jpg" alt="Moment 3">
-                <div class="date">خطوبتنا المجنونة 💍</div>
-            </div>
+        // كود ذكي بيقرأ كل الملفات المرفوعة في الـ Repository ويعرضها عل طول
+        const username = "SalmaRifaay";
+        const repo = "birth";
+        
+        fetch(`https://api.github.com/repos/${username}/${repo}/contents`)
+            .then(res => res.json())
+            .then(files => {
+                const gallery = document.getElementById('photoGallery');
+                let count = 1;
+                
+                // ترتيب الملفات
+                files.forEach(file => {
+                    const name = file.name.toLowerCase();
+                    // التأكد إنها صورة أو فيديو ومش ملفات الكود
+                    if (name !== 'index.html' && name !== 'readme.md' && (name.endsWith('.jpg') || name.endsWith('.jpeg') || name.endsWith('.png') || name.endsWith('.mp4') || name.endsWith('.mov'))) {
+                        
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        
+                        if (name.endsWith('.mp4') || name.endsWith('.mov')) {
+                            card.innerHTML = `<video src="${file.name}" controls></video>`;
+                        } else {
+                            let text = '';
+                            if (count === 1) text = '<div class="date">أول صورة لينا سوا ♥</div>';
+                            else if (count === 2) text = '<div class="date">أحلى يوم معاك ♥</div>';
+                            else if (count === 3) text = '<div class="date">خطوبتنا المجنونة 💍</div>';
+                            
+                            card.innerHTML = `<img src="${file.name}" alt="Moment">${text}`;
+                        }
+                        
+                        gallery.appendChild(card);
+                        count++;
+                    }
+                });
 
-            <div class="card">
-                <img src="img4.jpg" alt="Moment 4">
-            </div>
+                // إضافة الرسالة الأخيرة في آخر كارت
+                if(gallery.lastChild) {
+                    const lastCard = gallery.lastChild;
+                    if(!lastCard.querySelector('.date')) {
+                        const lastDate = document.createElement('div');
+                        lastDate.className = 'date';
+                        lastDate.innerHTML = 'كل سنة وأنت معايا ي حبيب سوزو 🙈❤️';
+                        lastCard.appendChild(lastDate);
+                    }
+                }
+            });
+    </script>
 
-            <div class="card">
-                <img src="img5.jpg" alt="Moment 5">
-            </div>
-
-            <div class="card">
-                <img src="img6.jpg" alt="Moment 6">
-            </div>
-
-            <div class="card">
-                <img src="img7.jpg" alt="Moment 7">
-            </div>
-
-            <div class="card">
-                <img src="img8.jpg" alt="Moment 8">
-            </div>
+</body>
+</html>
