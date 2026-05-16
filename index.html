@@ -96,8 +96,8 @@
 <body>
 
     <div class="header">
-        <div class="subtitle">✦ HAPPY BIRTHDAY "YOUSSEF" OFAA ✦</div>
-        <h1 dir="ltr">Let's Celebrate <br><span class="highlight">"youssef" ofaa</span> 🎂</h1>
+        <div class="subtitle">✦ HAPPY BIRTHDAY YOUSSEF OFAA ✦</div>
+        <h1 dir="ltr">Let's Celebrate <br><span class="highlight">youssef ofaa</span> 🎂</h1>
         <div class="cake">❤️🎉</div>
         <button class="btn" onclick="celebrateNow()">✦ CELEBRATE 🎁</button>
     </div>
@@ -136,7 +136,7 @@
             "كمان سنه ان شاء الله هنتصور تاني في المرايه واحنا متجوزين ونحطهم جمب بعض ونقعد نحكي سوا ذكرياتنا ونضحك زي دلوقت♥️...معقول عدي بينا سنه وعملنا ذكريات حلوه كتير والعمر جري بينا بسرعه كده!..تحس الزمن بيجي مع الحبيب الحلو الحنين بيجري بسرعه!🙂😂",
             "اعيش واصحيك بدري وننزل نروح النيل طول العمررر🤩...معلش انا والنيل قصه حب لا تنتهي بقي👀",
             "ما بردوا مينفعش يعني اقول لزوجي قره عيني يوسف الا جايبلي الهديه!! فاكر اما كنت استفزك؟😂😂♥️...انا كنت بموت ضحك عليك حرفيا😂😂",
-            "تتقدم هه？？ يعني بالعقلللل بعد الاستوري دي المفروض تفهم اني فهمت يعنييييي 😂😂...شوفت مين فينا الغبي بقييي😂",
+            "تتقدم هه؟؟ يعني بالعقلللل بعد الاستوري دي المفروض تفهم اني فهمت يعنييييي 😂😂...شوفت مين فينا الغبي بقييي😂",
             "خيبت خالص انت للاسف😒...بس هلبس ضيق وقصيررررررررر😁",
             "هموووت😂😂😂😂😂...انت كنت غلبان ولا غبي؟😂😂",
             "كنت بتعمد استفزك عشان اقعد اضحك😂👀",
@@ -179,10 +179,7 @@
                     
                     const captionText = captions[index] ? captions[index] : "مكتبولكوا أحلى ذكريات سوا سوا ♥";
                     
-                    card.innerHTML = `
-                        ${mediaElement}
-                        <div class="date">${captionText}</div>
-                    `;
+                    card.innerHTML = mediaElement + '<div class="date">' + captionText + '</div>';
                     
                     gallery.appendChild(card);
                 });
