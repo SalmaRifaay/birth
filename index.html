@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+                    <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -9,14 +9,206 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f6f0;
+            background-color: #fcf8f2;
             color: #4a3b32;
             text-align: center;
             overflow-x: hidden;
         }
+        /* شاشات الكويز والترحيب */
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffeef2 0%, #fcf8f2 100%);
+            box-sizing: border-box;
+            position: relative;
+        }
+        .quiz-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(184, 92, 108, 0.1);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .quiz-title {
+            font-size: 2rem;
+            color: #5c3d46;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .quiz-subtitle {
+            font-size: 1.1rem;
+            color: #b85c6c;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        .question-text {
+            font-size: 1.3rem;
+            color: #4a3b32;
+            margin-bottom: 25px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            background-color: #f9f2f4;
+            color: #5c3d46;
+            border: 2px solid #f0e2e6;
+            padding: 15px;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.2s ease;
+            text-align: center;
+        }
+        .option-btn:hover {
+            background-color: #f0e2e6;
+            border-color: #b85c6c;
+        }
+        /* صندوق الكتابة للسؤال الرابع */
+        .text-input-container {
+            display: none;
+            margin-top: 15px;
+            animation: fadeIn 0.4s ease;
+        }
+        .text-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #f0e2e6;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            text-align: center;
+            color: #4a3b32;
+        }
+        .text-input:focus {
+            border-color: #b85c6c;
+            outline: none;
+        }
+        .submit-btn {
+            background-color: #b85c6c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            transition: 0.2s;
+        }
+        .submit-btn:hover {
+            background-color: #5c3d46;
+        }
+
+        /* النوافذ المنبثقة (Pop-ups) */
+        .error-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(92, 61, 70, 0.3);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .error-popup {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            max-width: 340px;
+            width: 90%;
+            text-align: center;
+            box-sizing: border-box;
+            border: 2px solid #f0e2e6;
+            animation: popupScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .error-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+        .error-message {
+            font-size: 1.3rem;
+            color: #5c3d46;
+            margin-bottom: 25px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+        .retry-btn {
+            background-color: #b85c6c;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(184, 92, 108, 0.2);
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .retry-btn:hover {
+            background-color: #9c4655;
+        }
+        .skip-btn {
+            background-color: #5c3d46;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+        }
+        .skip-btn:hover {
+            background-color: #7d5460;
+        }
+
+        @keyframes popupScale {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .start-btn {
+            background-color: #5c3d46;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(92, 61, 70, 0.2);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .start-btn:hover {
+            background-color: #7d5460;
+            transform: scale(1.05);
+        }
+        /* محتوى الموقع الأساسي */
+        #mainContent {
+            display: none;
+        }
         .header {
             padding: 70px 20px;
-            background: linear-gradient(to bottom, #f3ebe1, #f9f6f0);
+            background: linear-gradient(to bottom, #f3ebe1, #fcf8f2);
         }
         .subtitle {
             font-style: italic;
@@ -95,22 +287,168 @@
 </head>
 <body>
 
-    <div class="header">
-        <div class="subtitle">✦ HAPPY BIRTHDAY YOUSSEF OFAA ✦</div>
-        <h1 dir="ltr">Let's Celebrate <br><span class="highlight">youssef ofaa</span> 🎂</h1>
-        <div class="cake">❤️🎉</div>
-        <button class="btn" onclick="celebrateNow()">✦ CELEBRATE 🎁</button>
+    <div id="errorPopupOverlay" class="error-overlay">
+        <div class="error-popup">
+            <div class="error-emoji">😡</div>
+            <div class="error-message">طب مفيش عيييد ميلاد 👑</div>
+            <button class="retry-btn" onclick="closeErrorPopup()">حاول تاني</button>
+        </div>
     </div>
 
-    <div class="memories-section">
-        <div class="subtitle">✦ MEMORIES ✦</div>
-        <h2 style="font-weight: 300; font-style: italic; font-size: 1.8rem; margin-top: 5px; color: #5c3d46;">Our Beautiful Moments</h2>
-        
-        <div class="gallery" id="photoGallery">
+    <div id="knifePopupOverlay" class="error-overlay">
+        <div class="error-popup">
+            <div class="error-emoji">🔪👀</div>
+            <div class="error-message">الحظاظه والقلم الرصاص الخشب ي استاااذ 🔪🔪</div>
+            <button class="retry-btn" onclick="closeKnifePopup()">هرجع أكتبها صح ✍️</button>
+            <button class="skip-btn" onclick="skipToMainContent()">عدي عدي كسفتني😒</button>
+        </div>
+    </div>
+
+    <div id="welcomeScreen" class="quiz-container">
+        <div class="quiz-card">
+            <div class="subtitle">✦ A SPECIAL DAY ✦</div>
+            <div class="quiz-title" style="font-family: serif; font-style: italic;">Today is<br>Medo's Birthday</div>
+            <div class="quiz-subtitle" style="margin-top: 10px;">Let the celebration begin ✨</div>
+            <button class="start-btn" onclick="startQuiz()">ابدأ الكويز ←</button>
+        </div>
+    </div>
+
+    <div id="quizScreen" class="quiz-container" style="display: none;">
+        <div class="quiz-card">
+            <div class="quiz-subtitle" id="questionNumber">السؤال الأول</div>
+            <div class="question-text" id="questionText">جاري تحميل السؤال...</div>
+            <div id="optionsContainer">
+                </div>
+            <div id="textInputContainer" class="text-input-container">
+                <input type="text" id="customAnswer" class="text-input" placeholder="اكتب إجابتك هنا...">
+                <button class="submit-btn" onclick="validateCustomAnswer()">تأكيد الإجابة 🚀</button>
             </div>
+        </div>
+    </div>
+
+    <div id="mainContent">
+        <div class="header">
+            <div class="subtitle">✦ HAPPY BIRTHDAY YOUSSEF OFAA ✦</div>
+            <h1 dir="ltr">Let's Celebrate <br><span class="highlight">youssef ofaa</span> 🎂</h1>
+            <div class="cake">❤️🎉</div>
+            <button class="btn" onclick="celebrateNow()">✦ CELEBRATE 🎁</button>
+        </div>
+
+        <div class="memories-section">
+            <div class="subtitle">✦ MEMORIES ✦</div>
+            <h2 style="font-weight: 300; font-style: italic; font-size: 1.8rem; margin-top: 5px; color: #5c3d46;">Our Beautiful Moments</h2>
+            
+            <div class="gallery" id="photoGallery">
+                </div>
+        </div>
     </div>
 
     <script>
+        const quizData = [
+            {
+                question: "بتُحب إيه أكتر؟",
+                options: ["ميسي ⚽", "محشي ورق عنب 🍇", "أنا طبعاً واقطع! 🥰"],
+                correct: 2
+            },
+            {
+                question: "بتحب مين أكتر؟",
+                options: ["سلمى ♥️", "سوسو 🥰", "سوزو 🙈"],
+                correct: 2
+            },
+            {
+                question: "لو جيت في يوم وقولتلك مش قادرة أطبخ.. هتعمل إيه؟",
+                options: ["هتقولي \"أنا جعان قومي اعمليلي أي حاجة\" 😡", "هتقولي \"ارتاحي يا حبيبتي وأنا هجيب لنا أكل جاهز\" ❤️"],
+                correct: 1
+            },
+            {
+                question: "فاكر أول هدية جبتها لـ سوزو كانت إيه؟ 🎁",
+                options: ["بوكس فيه بابا نويل والشال الاحمر 🎅", "شوكولاته جلاكسي 🍫", "حاجه تانيه؟ 👀"],
+                correct: 2
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function startQuiz() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('quizScreen').style.display = 'flex';
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const currentQuiz = quizData[currentQuestionIndex];
+            const qNumText = ["الأول", "الثاني", "الثالث", "الرابع"];
+            
+            document.getElementById('questionNumber').innerText = `✦ السؤال ${qNumText[currentQuestionIndex]} ✦`;
+            document.getElementById('questionText').innerText = currentQuiz.question;
+            
+            document.getElementById('textInputContainer').style.display = 'none';
+            document.getElementById('customAnswer').value = '';
+            
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            
+            currentQuiz.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.innerText = option;
+                button.onclick = () => checkAnswer(index);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selectedIndex) {
+            const currentQuiz = quizData[currentQuestionIndex];
+            
+            if (currentQuestionIndex === 3) {
+                if (selectedIndex === 2) {
+                    document.getElementById('textInputContainer').style.display = 'block';
+                    document.getElementById('customAnswer').focus();
+                } else {
+                    showErrorPopup();
+                }
+            } else {
+                if (selectedIndex === currentQuiz.correct) {
+                    currentQuestionIndex++;
+                    if (currentQuestionIndex < quizData.length) {
+                        loadQuestion();
+                    } else {
+                        showMainContent();
+                    }
+                } else {
+                    showErrorPopup();
+                }
+            }
+        }
+
+        function showErrorPopup() { document.getElementById('errorPopupOverlay').style.display = 'flex'; }
+        function closeErrorPopup() { document.getElementById('errorPopupOverlay').style.display = 'none'; }
+
+        function showKnifePopup() { document.getElementById('knifePopupOverlay').style.display = 'flex'; }
+        function closeKnifePopup() { document.getElementById('knifePopupOverlay').style.display = 'none'; }
+        
+        function skipToMainContent() {
+            closeKnifePopup();
+            showMainContent();
+        }
+
+        function validateCustomAnswer() {
+            const userInput = document.getElementById('customAnswer').value.trim().toLowerCase();
+            
+            if (userInput.includes('حظاظه') || userInput.includes('حظاظة') || userInput.includes('قلم')) {
+                showMainContent();
+            } else {
+                showKnifePopup();
+            }
+        }
+
+        function showMainContent() {
+            document.getElementById('quizScreen').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            loadGallery();
+        }
+
         function celebrateNow() {
             confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
             setTimeout(function() {
@@ -142,7 +480,7 @@
             "كنت بتعمد استفزك عشان اقعد اضحك😂👀",
             "فاكر اليوم ده لما قعدنا اتفرجنا سوا علي الفيلم?♥️",
             "قلبي كان بيدق جامد اوي مش انت بس وكنت متوتره اوي ،كان في ميكس بين الحماس وبين التوتر ومكنتش عارفه اقول اي خالص ولا اخذ الامر بجديه ،كنت بضحك وبس😂😂",
-            "هنا انا فرحت اوييييييي وكنت طايره من الفرحه، وبعدها اتخانقنا حته خناقههه مش نسياها بجد لما قولتلك مش هطلع في قرايه الفاتحه عشان مش عاجبني اليوم وفضلت اتخانق معاك انت يعيني وطلعت جناني وتوتري عليك انت,اني اسفه😂😂😂♥️",
+            "هنا انا فرحت اوييييييي وكنت طايره من الفرحه, وبعدها اتخانقنا حته خناقههه مش نسياها بجد لما قولتلك مش هطلع في قرايه الفاتحه عشان مش عاجبني اليوم وفضلت اتخانق معاك انت يعيني وطلعت جناني وتوتري عليك انت،اني اسفه😂😂😂♥️",
             "مش ناسيه مامتك اما طلبت ايدي وانا بالبيجامه وهي جايبه ايس كريم😂😂😂",
             "مين الناس الا جايه مخصوص عشان ابنهم بيحبني؟🙈♥️...الواد ضرتي طالعلي في كل حاجه ده ايده😒",
             "مش بقولك الطيور علي اشكالها طلعت بتقع فعلا؟😂😂♥️",
@@ -151,40 +489,41 @@
             "اول هديه منك واهم هديه بالنسبالي♥️🥂"
         ];
 
-        const username = "SalmaRifaay";
-        const repo = "birth";
-        
-        fetch(`https://api.github.com/repos/${username}/${repo}/contents`)
-            .then(res => res.json())
-            .then(files => {
-                const gallery = document.getElementById('photoGallery');
-                
-                const mediaFiles = files.filter(file => {
-                    const name = file.name.toLowerCase();
-                    return name !== 'index.html' && name !== 'readme.md' && 
-                           (name.endsWith('.jpg') || name.endsWith('.jpeg') || name.endsWith('.png') || name.endsWith('.mp4') || name.endsWith('.mov'));
-                });
+        function loadGallery() {
+            const username = "SalmaRifaay";
+            const repo = "birth";
+            
+            fetch(`https://api.github.com/repos/${username}/${repo}/contents`)
+                .then(res => res.json())
+                .then(files => {
+                    const gallery = document.getElementById('photoGallery');
+                    gallery.innerHTML = ''; 
+                    
+                    const mediaFiles = files.filter(file => {
+                        const name = file.name.toLowerCase();
+                        return name !== 'index.html' && name !== 'readme.md' && 
+                               (name.endsWith('.jpg') || name.endsWith('.jpeg') || name.endsWith('.png') || name.endsWith('.mp4') || name.endsWith('.mov'));
+                    });
 
-                mediaFiles.forEach((file, index) => {
-                    const name = file.name.toLowerCase();
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    
-                    let mediaElement = '';
-                    if (name.endsWith('.mp4') || name.endsWith('.mov')) {
-                        mediaElement = `<video src="${file.name}" controls></video>`;
-                    } else {
-                        mediaElement = `<img src="${file.name}" alt="Moment">`;
-                    }
-                    
-                    const captionText = captions[index] ? captions[index] : "مكتبولكوا أحلى ذكريات سوا سوا ♥";
-                    
-                    card.innerHTML = mediaElement + '<div class="date">' + captionText + '</div>';
-                    
-                    gallery.appendChild(card);
+                    mediaFiles.forEach((file, index) => {
+                        const name = file.name.toLowerCase();
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        
+                        let mediaElement = '';
+                        if (name.endsWith('.mp4') || name.endsWith('.mov')) {
+                            mediaElement = `<video src="${file.name}" controls></video>`;
+                        } else {
+                            mediaElement = `<img src="${file.name}" alt="Moment">`;
+                        }
+                        
+                        const captionText = captions[index] ? captions[index] : "مكتبولكوا أحلى ذكريات سوا سوا ♥";
+                        
+                        card.innerHTML = mediaElement + '<div class="date">' + captionText + '</div>';
+                        gallery.appendChild(card);
+                    });
                 });
-            });
+        }
     </script>
-
 </body>
 </html>
