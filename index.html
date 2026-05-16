@@ -86,7 +86,9 @@
             margin-top: 12px;
             font-size: 0.95rem;
             color: #8c6d58;
-            font-weight: bold;
+            font-weight: 500;
+            line-height: 1.5;
+            padding: 0 5px;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
@@ -116,7 +118,40 @@
             }, 500);
         }
 
-        // كود ذكي بيقرأ كل الملفات المرفوعة في الـ Repository ويعرضها عل طول
+        // لستة الجمل والرسائل بتاعتك بالترتيب يا سلما
+        const captions = [
+            "كنت بتفكر هتبيع الخاتم امته ولا اي..مش هديهولك ي حبيبيي😂♥️",
+            "اول يوم نروح حته سوا 🤩،وكانت خطوبه جني والواد ضرتي الا مبحبهوش😒",
+            "اتصورت من غيرك قبل ما تيجيييي😂😜",
+            "قرايه فاتحتنا الا قلبت خطوبه مره واحده😂♥️...باباك مكنش فاضيلنا كان مركز مع الاكل😂😂",
+            "اتصورت من غيري بردوووا ي غدااار ...الطيور علي اشكالها بتقع شكلها كده😂😂",
+            "معرفش انا عرسان اي الا بينزلوا يشربوا قصب ...بعون الله معايا هتعمل كل حاجه غريبه😎😂",
+            "انا بححب اليوم ده اوي عشان كنت مرتاحه اوي وباكل براحتي وعلي طبيعتي مش مضطرة امثل بقي في البدايات والجو ده عشان انت حبيبي مصدر امان ليا♥️🫂...وخليتك تجرب الحماااام😎..واكلته انا في الاخر😂",
+            "يوم ما جرينا نجيب الدهب قبل ما يغلي وكنت متوتره اوي ومش فاهمه المفروض اعمل اي ولا اختار اي وكان نفسي تشاركني عشان كنت محتاره ومكسوفه اوي🙂😂",
+            "بتخسر معلمين بشنبات علي القهوه هه؟😂😂",
+            "اصدق صوره بينا تعبر عن علاقتنا بجد♥️😂",
+            "اول مره نخش سينما سوا ودخلنا احقر فيلم🙂🙂😂..مش ناسيه ريأكشات وشنا واحنا بنبص لبعض بقرف من المشاهد😂😂",
+            "بتضحك من كتر الخساره ولا اي😂😂😜",
+            "اول مره كبده بالفينو من عربيه المنوفي فاكر؟♥️",
+            "مش ناسيه الالفين جنيهههههه اعااااااا🔪🔪🔪",
+            "كمان سنه ان شاء الله هنتصور تاني في المرايه واحنا متجوزين ونحطهم جمب بعض ونقعد نحكي سوا ذكرياتنا ونضحك زي دلوقت♥️...معقول عدي بينا سنه وعملنا ذكريات حلوه كتير والعمر جري بينا بسرعه كده!..تحس الزمن بيجي مع الحبيب الحلو الحنين بيجري بسرعه!🙂😂",
+            "اعيش واصحيك بدري وننزل نروح النيل طول العمررر🤩...معلش انا والنيل قصه حب لا تنتهي بقي👀",
+            "ما بردوا مينفعش يعني اقول لزوجي قره عيني يوسف الا جايبلي الهديه!! فاكر اما كنت استفزك؟😂😂♥️...انا كنت بموت ضحك عليك حرفيا😂😂",
+            "تتقدم هه؟؟ يعني بالعقلللل بعد الاستوري دي المفروض تفهم اني فهمت يعنييييي 😂😂...شوفت مين فينا الغبي بقييي😂",
+            "خيبت خالص انت للاسف😒...بس هلبس ضيق وقصيررررررررر😁",
+            "هموووت😂😂😂😂😂...انت كنت غلبان ولا غبي؟😂😂",
+            "كنت بتعمد استفزك عشان اقعد اضحك😂👀",
+            "فاكر اليوم ده لما قعدنا اتفرجنا سوا علي الفيلم?♥️",
+            "قلبي كان بيدق جامد اوي مش انت بس وكنت متوتره اوي ،كان في ميكس بين الحماس وبين التوتر ومكنتش عارفه اقول اي خالص ولا اخذ الامر بجديه ،كنت بضحك وبس😂😂",
+            "هنا انا فرحت اوييييييي وكنت طايره من الفرحه، وبعدها اتخانقنا حته خناقههه مش نسياها بجد لما قولتلك مش هطلع في قرايه الفاتحه عشان مش عاجبني اليوم وفضلت اتخانق معاك انت يعيني وطلعت جناني وتوتري عليك انت،اني اسفه😂😂😂♥️",
+            "مش ناسيه مامتك اما طلبت ايدي وانا بالبيجامه وهي جايبه ايس كريم😂😂😂",
+            "مين الناس الا جايه مخصوص عشان ابنهم بيحبني؟🙈♥️...الواد ضرتي طالعلي في كل حاجه ده ايده😒",
+            "مش بقولك الطيور علي اشكالها طلعت بتقع فعلا؟😂😂♥️",
+            "ازاي تغفلني كده ي استاااااااذ ده انا هقتلككك",
+            "اول صلاه عيد واحنا سوااا ياوفا♥️،واول واخر عيد واحنا مخطوبين ان شاء الله ويبقي العيد الصغير الثاني متجوزين🙈♥️",
+            "اول هديه منك واهم هديه بالنسبالي♥️🥂"
+        ];
+
         const username = "SalmaRifaay";
         const repo = "birth";
         
@@ -124,43 +159,38 @@
             .then(res => res.json())
             .then(files => {
                 const gallery = document.getElementById('photoGallery');
-                let count = 1;
                 
-                // ترتيب الملفات
-                files.forEach(file => {
+                // تصفية الملفات عشان نضمن إنها ميديا بس
+                const mediaFiles = files.filter(file => {
                     const name = file.name.toLowerCase();
-                    // التأكد إنها صورة أو فيديو ومش ملفات الكود
-                    if (name !== 'index.html' && name !== 'readme.md' && (name.endsWith('.jpg') || name.endsWith('.jpeg') || name.endsWith('.png') || name.endsWith('.mp4') || name.endsWith('.mov'))) {
-                        
-                        const card = document.createElement('div');
-                        card.className = 'card';
-                        
-                        if (name.endsWith('.mp4') || name.endsWith('.mov')) {
-                            card.innerHTML = `<video src="${file.name}" controls></video>`;
-                        } else {
-                            let text = '';
-                            if (count === 1) text = '<div class="date">أول صورة لينا سوا ♥</div>';
-                            else if (count === 2) text = '<div class="date">أحلى يوم معاك ♥</div>';
-                            else if (count === 3) text = '<div class="date">خطوبتنا المجنونة 💍</div>';
-                            
-                            card.innerHTML = `<img src="${file.name}" alt="Moment">${text}`;
-                        }
-                        
-                        gallery.appendChild(card);
-                        count++;
-                    }
+                    return name !== 'index.html' && name !== 'readme.md' && 
+                           (name.endsWith('.jpg') || name.endsWith('.jpeg') || name.endsWith('.png') || name.endsWith('.mp4') || name.endsWith('.mov'));
                 });
 
-                // إضافة الرسالة الأخيرة في آخر كارت
-                if(gallery.lastChild) {
-                    const lastCard = gallery.lastChild;
-                    if(!lastCard.querySelector('.date')) {
-                        const lastDate = document.createElement('div');
-                        lastDate.className = 'date';
-                        lastDate.innerHTML = 'كل سنة وأنت معايا ي حبيب سوزو 🙈❤️';
-                        lastCard.appendChild(lastDate);
+                // عرض الميديا مع الجمل بالترتيب
+                mediaFiles.forEach((file, index) => {
+                    const name = file.name.toLowerCase();
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    
+                    // تحديد لو الملف فيديو أو صورة
+                    let mediaElement = '';
+                    if (name.endsWith('.mp4') || name.endsWith('.mov')) {
+                        mediaElement = `<video src="${file.name}" controls></video>`;
+                    } else {
+                        mediaElement = `<img src="${file.name}" alt="Moment">`;
                     }
-                }
+                    
+                    // جلب الجملة المقابلة للصورة من اللستة
+                    const captionText = captions[index] ? captions[index] : "مكتوبلكوا أحلى ذكريات سوا سوا ♥";
+                    
+                    card.innerHTML = `
+                        ${mediaElement}
+                        <div class="date">${captionText}</div>
+                    `;
+                    
+                    gallery.appendChild(card);
+                });
             });
     </script>
 
