@@ -117,7 +117,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(92, 61, 70, 0.3);
+            background-color: rgba(92, 61, 70, 0.4);
             backdrop-filter: blur(4px);
             justify-content: center;
             align-items: center;
@@ -128,12 +128,25 @@
             padding: 35px 25px;
             border-radius: 25px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            max-width: 340px;
+            max-width: 360px;
             width: 90%;
             text-align: center;
             box-sizing: border-box;
             border: 2px solid #f0e2e6;
             animation: popupScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        /* بوب أب مخصصة لرسالة التهنئة الكبيرة */
+        .celebrate-popup {
+            max-width: 420px;
+        }
+        .celebrate-message {
+            font-size: 1.15rem;
+            color: #5c3d46;
+            margin-bottom: 25px;
+            font-weight: 500;
+            line-height: 1.6;
+            text-align: justify;
+            text-align-last: center;
         }
         .error-emoji {
             font-size: 3.5rem;
@@ -304,6 +317,16 @@
         </div>
     </div>
 
+    <div id="celebratePopupOverlay" class="error-overlay">
+        <div class="error-popup celebrate-popup">
+            <div class="error-emoji">💍♥️🙈</div>
+            <div class="celebrate-message">
+                كل سنه وانت طيب ي حبيبي وعمري، انا بحبك اوي وبحب ايامي كلها معاك... صحيح ده مش اول عيدميلاد ليك وانا معاك بس اول عيدميلاد وانا خطيبتك مش مجرد بيست فريند بقي😂، وان شاء الله عيدميلادك الجاي يكون واحنا متجوزين ومبسوطين واحاول اعملك سبرايز احلى من دي عشان انا معنديش غير اوفا واحد حبيبي وحياتي وعمري والله... ربنا يخليك ليا ي حبيب سوزو😂♥️♥️🙈
+            </div>
+            <button class="retry-btn" onclick="closeCelebratePopup()">حبيبي يا سوزو 🫂</button>
+        </div>
+    </div>
+
     <div id="welcomeScreen" class="quiz-container">
         <div class="quiz-card">
             <div class="subtitle">✦ A SPECIAL DAY ✦</div>
@@ -344,7 +367,6 @@
     </div>
 
     <script>
-        // الـ Quiz العنوان لـ Ofaa
         const quizData = [
             {
                 question: "بتُحب إيه أكتر؟",
@@ -352,7 +374,7 @@
                 correct: 2
             },
             {
-                question: "بتحب مين أكتر؟",
+                question: "بتحب مين أكتر？",
                 options: ["سلمى ♥️", "سوسو 🥰", "سوزو 🙈"],
                 correct: 2
             },
@@ -450,11 +472,14 @@
             loadGallery();
         }
 
+        // تشغيل البوب أب الجديدة المضمونة وصواريخ الكنفيتي
         function celebrateNow() {
             confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-            setTimeout(function() {
-                alert("كل سنه وانت طيب ي حبيبي وعمري،انا بحبك اوي وبحب ايامي كلها معاك...صحيح ده مش اول عيدميلاد ليك وانا معاك بس اول عيدميلاد وانا خطيبتك مش مجرد بيست فريند بقي😂،وان شاء الله عيدميلادك الجاي يكون واحنا متجوزين ومبسوطين واحاول اعملك سبرايز احلى من دي عشان انا معنديش غير اوفا واحد حبيبي وحياتي وعمري والله...ربنا يخليك ليا ي حبيب سوزو😂♥️♥️🙈");
-            }, 500);
+            document.getElementById('celebratePopupOverlay').style.display = 'flex';
+        }
+        
+        function closeCelebratePopup() {
+            document.getElementById('celebratePopupOverlay').style.display = 'none';
         }
 
         const captions = [
@@ -474,7 +499,7 @@
             "مش ناسيه الالفين جنيهههههه اعااااااا🔪🔪🔪",
             "كمان سنه ان شاء الله هنتصور تاني في المرايه واحنا متجوزين ونحطهم جمب بعض ونقعد نحكي سوا ذكرياتنا ونضحك زي دلوقت♥️...معقول عدي بينا سنه وعملنا ذكريات حلوه كتير والعمر جري بينا بسرعه كده!..تحس الزمن بيجي مع الحبيب الحلو الحنين بيجري بسرعه!🙂😂",
             "اعيش واصحيك بدري وننزل نروح النيل طول العمررر🤩...معلش انا والنيل قصه حب لا تنتهي بقي👀",
-            "ما بردوا مينفعش يعني اقول لزوجي قره عيني يوسف الا جايبلي الهديه!! فاكر اما كنت استفزك؟😂😂♥️...انا كنت بموت ضحك عليك حرفيا😂😂",
+            "ما بردوا مينفعش يعني اقول لزوجي قره عيني يوسف الا جايبلي الهديه!! فاكر اما كنت استفزك?😂😂♥️...انا كنت بموت ضحك عليك حرفيا😂😂",
             "تتقدم هه؟؟ يعني بالعقلللل بعد الاستوري دي المفروض تفهم اني فهمت يعنييييي 😂😂...شوفت مين فينا الغبي بقييي😂",
             "خيبت خالص انت للاسف😒...بس هلبس ضيق وقصيررررررررر😁",
             "هموووت😂😂😂😂😂...انت كنت غلبان ولا غبي؟😂😂",
