@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -65,3 +66,128 @@
             display: flex;
             flex-direction: column;
             gap: 25px;
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .card img, .card video {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+            object-fit: cover;
+        }
+        .date {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            color: #8c6d58;
+            font-weight: 500;
+            line-height: 1.5;
+            padding: 0 5px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <div class="subtitle">✦ HAPPY BIRTHDAY "YOUSSEF" OFAA ✦</div>
+        <h1 dir="ltr">Let's Celebrate <br><span class="highlight">"youssef" ofaa</span> 🎂</h1>
+        <div class="cake">❤️🎉</div>
+        <button class="btn" onclick="celebrateNow()">✦ CELEBRATE 🎁</button>
+    </div>
+
+    <div class="memories-section">
+        <div class="subtitle">✦ MEMORIES ✦</div>
+        <h2 style="font-weight: 300; font-style: italic; font-size: 1.8rem; margin-top: 5px; color: #5c3d46;">Our Beautiful Moments</h2>
+        
+        <div class="gallery" id="photoGallery">
+            </div>
+    </div>
+
+    <script>
+        function celebrateNow() {
+            confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+            setTimeout(function() {
+                alert("كل سنه وانت طيب ي حبيبي وعمري،انا بحبك اوي وبحب ايامي كلها معاك...صحيح ده مش اول عيدميلاد ليك وانا معاك بس اول عيدميلاد وانا خطيبتك مش مجرد بيست فريند بقي😂،وان شاء الله عيدميلادك الجاي يكون واحنا متجوزين ومبسوطين واحاول اعملك سبرايز احلى من دي عشان انا معنديش غير اوفا واحد حبيبي وحياتي وعمري والله...ربنا يخليك ليا ي حبيب سوزو😂♥️♥️🙈");
+            }, 500);
+        }
+
+        const captions = [
+            "كنت بتفكر هتبيع الخاتم امته ولا اي..مش هديهولك ي حبيبيي😂♥️",
+            "اول يوم نروح حته سوا 🤩،وكانت خطوبه جني والواد ضرتي الا مبحبهوش😒",
+            "اتصورت من غيرك قبل ما تيجيييي😂😜",
+            "قرايه فاتحتنا الا قلبت خطوبه مره واحده😂♥️...باباك مكنش فاضيلنا كان مركز مع الاكل😂😂",
+            "اتصورت من غيري بردوووا ي غدااار ...الطيور علي اشكالها بتقع شكلها كده😂😂",
+            "معرفش انا عرسان اي الا بينزلوا يشربوا قصب ...بعون الله معايا هتعمل كل حاجه غريبه😎😂",
+            "انا بححب اليوم ده اوي عشان كنت مرتاحه اوي وباكل براحتي وعلي طبيعتي مش مضطرة امثل بقي في البدايات والجو ده عشان انت حبيبي مصدر امان ليا♥️🫂...وخليتك تجرب الحماااام😎..واكلته انا في الاخر😂",
+            "يوم ما جرينا نجيب الدهب قبل ما يغلي وكنت متوتره اوي ومش فاهمه المفروض اعمل اي ولا اختار اي وكان نفسي تشاركني عشان كنت محتاره ومكسوفه اوي🙂😂",
+            "بتخسر معلمين بشنبات علي القهوه هه؟😂😂",
+            "اصدق صوره بينا تعبر عن علاقتنا بجد♥️😂",
+            "اول مره نخش سينما سوا ودخلنا احقر فيلم🙂🙂😂..مش ناسيه ريأكشات وشنا واحنا بنبص لبعض بقرف من المشاهد😂😂",
+            "بتضحك من كتر الخساره ولا اي😂😂😜",
+            "اول مره كبده بالفينو من عربيه المنوفي فاكر؟♥️",
+            "مش ناسيه الالفين جنيهههههه اعااااااا🔪🔪🔪",
+            "كمان سنه ان شاء الله هنتصور تاني في المرايه واحنا متجوزين ونحطهم جمب بعض ونقعد نحكي سوا ذكرياتنا ونضحك زي دلوقت♥️...معقول عدي بينا سنه وعملنا ذكريات حلوه كتير والعمر جري بينا بسرعه كده!..تحس الزمن بيجي مع الحبيب الحلو الحنين بيجري بسرعه!🙂😂",
+            "اعيش واصحيك بدري وننزل نروح النيل طول العمررر🤩...معلش انا والنيل قصه حب لا تنتهي بقي👀",
+            "ما بردوا مينفعش يعني اقول لزوجي قره عيني يوسف الا جايبلي الهديه!! فاكر اما كنت استفزك؟😂😂♥️...انا كنت بموت ضحك عليك حرفيا😂😂",
+            "تتقدم هه？？ يعني بالعقلللل بعد الاستوري دي المفروض تفهم اني فهمت يعنييييي 😂😂...شوفت مين فينا الغبي بقييي😂",
+            "خيبت خالص انت للاسف😒...بس هلبس ضيق وقصيررررررررر😁",
+            "هموووت😂😂😂😂😂...انت كنت غلبان ولا غبي؟😂😂",
+            "كنت بتعمد استفزك عشان اقعد اضحك😂👀",
+            "فاكر اليوم ده لما قعدنا اتفرجنا سوا علي الفيلم?♥️",
+            "قلبي كان بيدق جامد اوي مش انت بس وكنت متوتره اوي ،كان في ميكس بين الحماس وبين التوتر ومكنتش عارفه اقول اي خالص ولا اخذ الامر بجديه ،كنت بضحك وبس😂😂",
+            "هنا انا فرحت اوييييييي وكنت طايره من الفرحه، وبعدها اتخانقنا حته خناقههه مش نسياها بجد لما قولتلك مش هطلع في قرايه الفاتحه عشان مش عاجبني اليوم وفضلت اتخانق معاك انت يعيني وطلعت جناني وتوتري عليك انت,اني اسفه😂😂😂♥️",
+            "مش ناسيه مامتك اما طلبت ايدي وانا بالبيجامه وهي جايبه ايس كريم😂😂😂",
+            "مين الناس الا جايه مخصوص عشان ابنهم بيحبني؟🙈♥️...الواد ضرتي طالعلي في كل حاجه ده ايده😒",
+            "مش بقولك الطيور علي اشكالها طلعت بتقع فعلا؟😂😂♥️",
+            "ازاي تغفلني كده ي استاااااااذ ده انا هقتلككك",
+            "اول صلاه عيد واحنا سوااا ياوفا♥️،واول واخر عيد واحنا مخطوبين ان شاء الله ويبقي العيد الصغير الثاني متجوزين🙈♥️",
+            "اول هديه منك واهم هديه بالنسبالي♥️🥂"
+        ];
+
+        const username = "SalmaRifaay";
+        const repo = "birth";
+        
+        fetch(`https://api.github.com/repos/${username}/${repo}/contents`)
+            .then(res => res.json())
+            .then(files => {
+                const gallery = document.getElementById('photoGallery');
+                
+                const mediaFiles = files.filter(file => {
+                    const name = file.name.toLowerCase();
+                    return name !== 'index.html' && name !== 'readme.md' && 
+                           (name.endsWith('.jpg') || name.endsWith('.jpeg') || name.endsWith('.png') || name.endsWith('.mp4') || name.endsWith('.mov'));
+                });
+
+                mediaFiles.forEach((file, index) => {
+                    const name = file.name.toLowerCase();
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    
+                    let mediaElement = '';
+                    if (name.endsWith('.mp4') || name.endsWith('.mov')) {
+                        mediaElement = `<video src="${file.name}" controls></video>`;
+                    } else {
+                        mediaElement = `<img src="${file.name}" alt="Moment">`;
+                    }
+                    
+                    const captionText = captions[index] ? captions[index] : "مكتبولكوا أحلى ذكريات سوا سوا ♥";
+                    
+                    card.innerHTML = `
+                        ${mediaElement}
+                        <div class="date">${captionText}</div>
+                    `;
+                    
+                    gallery.appendChild(card);
+                });
+            });
+    </script>
+
+</body>
+</html>
